@@ -1,0 +1,7 @@
+{
+  "name": "Nusantara EduCulture14",
+  "description": "An educational application for teachers and students focusing on Indonesian culture and history, featuring learning dashboards, generative AI chat for historical queries, and attendance tracking.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
