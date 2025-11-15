@@ -2,6 +2,8 @@ import React from 'react';
 import DashboardChart from '../components/DashboardChart';
 import { UserType, Notification } from '../types';
 import { Header } from '../components/Header';
+import { PlusIcon } from '../components/icons/SolidIcons';
+import { tongkonanThumbnail } from '../assets/courseImages';
 
 interface HomeScreenProps {
   user: { type: UserType; name: string; };
@@ -73,29 +75,41 @@ export default function HomeScreen({ user, onCourseSelect, notifications, setNot
         </div>
 
         <section>
-          <h2 className="text-xl font-bold text-brand-primary mb-4">Belajar Budaya</h2>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-semibold text-brand-primary">Kelas Belajar Budaya</h2>
+             {(user.type === UserType.Guru || user.type === UserType.Admin) && (
+              <button
+                onClick={() => alert('Fitur untuk menambah kelas belajar baru akan segera hadir!')}
+                className="flex items-center space-x-1.5 bg-brand-secondary text-white px-2.5 py-1 rounded-md text-xs font-semibold hover:bg-brand-primary transition-colors shadow"
+                aria-label="Tambah kelas belajar baru"
+              >
+                <PlusIcon className="h-4 w-4" />
+                <span>Tambah Kelas</span>
+              </button>
+            )}
+          </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               <LearningCourseCard 
                 title="Budaya Toraja" 
-                imgSrc="https://images.unsplash.com/photo-1588623228495-6531505535b4?q=80&w=1470&auto=format&fit=crop" 
+                imgSrc={tongkonanThumbnail}
                 isClickable={true}
                 onClick={() => onCourseSelect('Tana Toraja')}
               />
               <LearningCourseCard 
                 title="Budaya Luwu" 
-                imgSrc="https://kebudayaan.kemdikbud.go.id/bpnbjabar/wp-content/uploads/sites/13/2016/06/Tari-Pajaga-Luwu-e1466044732155.jpg" 
+                imgSrc="https://upload.wikimedia.org/wikipedia/commons/2/2f/Istana_Datu_Luwu_di_Palopo.jpg" 
                 isClickable={true}
                 onClick={() => onCourseSelect('Luwu')}
               />
               <LearningCourseCard 
                 title="Budaya Luwu Utara" 
-                imgSrc="https://disbudpar.luwuutarakab.go.id/wp-content/uploads/2021/11/Tenun-Rongkong.jpg" 
+                imgSrc="https://upload.wikimedia.org/wikipedia/commons/d/d2/Rumah_adat_Rongkong.jpg" 
                 isClickable={true}
                 onClick={() => onCourseSelect('Luwu Utara')}
               />
               <LearningCourseCard 
                 title="Budaya Palopo" 
-                imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Masjid_Jami_Tua_Palopo_2.jpg/1280px-Masjid_Jami_Tua_Palopo_2.jpg" 
+                imgSrc="https://upload.wikimedia.org/wikipedia/commons/f/f7/Monumen_Perjuangan_Rakyat_Luwu.jpg" 
                 isClickable={true}
                 onClick={() => onCourseSelect('Palopo')}
               />
